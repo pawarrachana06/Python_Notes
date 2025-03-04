@@ -162,6 +162,133 @@ age=int(input("your age is?"))
 
 ### Basic Datatypes in python 
 
+Data types are classification of data which tells the complier or interpreter how the programmer intends to use the data.
+
+They determine the type of operations that can be performed on the data,the values that the data can take, and the amount of memory needed to store the data.
+
+
+### Operators
+
+Python provides various types of operators:
+
+### **1. Arithmetic Operators**
+```python
+a = 10
+b = 3
+print(a + b)  # Addition: 13
+print(a - b)  # Subtraction: 7
+print(a * b)  # Multiplication: 30
+print(a / b)  # Division: 3.3333
+print(a % b)  # Modulus: 1
+print(a ** b) # Exponentiation: 1000
+print(a // b) # Floor Division: 3
+```
+
+### **2. Comparison (Relational) Operators**
+```python
+a, b = 10, 20
+print(a == b)  # False
+print(a != b)  # True
+print(a > b)   # False
+print(a < b)   # True
+print(a >= b)  # False
+print(a <= b)  # True
+```
+
+### **3. Logical Operators**
+```python
+x, y = True, False
+print(x and y)  # False
+print(x or y)   # True
+print(not x)    # False
+```
+
+### **4. Bitwise Operators**
+```python
+a, b = 5, 3  # 5 = 101, 3 = 011
+print(a & b)  # AND: 1 (001)
+print(a | b)  # OR: 7 (111)
+print(a ^ b)  # XOR: 6 (110)
+print(~a)     # NOT: -6
+print(a << 1) # Left Shift: 10
+print(a >> 1) # Right Shift: 2
+```
+
+**Explanation of Left and Right Shift in Layman Terms:**
+- **Left Shift (`<<`)**: Think of it like multiplying by 2. Each shift moves all bits to the left, doubling the number.
+  ```python
+  a = 5   # Binary: 101
+  print(a << 1)  # Moves bits left → Binary: 1010 (Decimal: 10)
+  ```
+- **Right Shift (`>>`)**: Think of it like dividing by 2. Each shift moves all bits to the right, halving the number.
+
+  
+  ```python
+  a = 5   # Binary: 101
+  print(a >> 1)  # Moves bits right → Binary: 10 (Decimal: 2)
+  ```
+
+
+
+#### **Left Shift (`<<`)**
+Think of it like multiplying by 2. Each shift moves all bits to the left, doubling the number.
+
+```
+Binary:  00000101  (5 in decimal)
+Shift << 1
+Result:  00001010  (10 in decimal)
+```
+
+```python
+a = 5   # Binary: 101
+print(a << 1)  # Moves bits left → Binary: 1010 (Decimal: 10)
+```
+
+#### **Right Shift (`>>`)**
+Think of it like dividing by 2. Each shift moves all bits to the right, halving the number.
+
+```
+Binary:  00000101  (5 in decimal)
+Shift >> 1
+Result:  00000010  (2 in decimal)
+```
+
+```python
+a = 5   # Binary: 101
+print(a >> 1)  # Moves bits right → Binary: 10 (Decimal: 2)
+```  
+
+### **5. Assignment Operators**
+```python
+a = 10
+a += 5  # a = a + 5 => 15
+a -= 3  # a = a - 3 => 12
+a *= 2  # a = a * 2 => 24
+a /= 4  # a = a / 4 => 6.0
+a %= 5  # a = a % 5 => 1
+a **= 3 # a = a ** 3 => 1
+```
+
+### **6. Identity Operators**
+```python
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+print(a is b)    # True (Same object)
+print(a is c)    # False (Different objects)
+print(a is not c) # True
+```
+
+### **7. Membership Operators**
+```python
+text = "Hello, World!"
+print('H' in text)       # True
+print('hello' in text)   # False (Case-sensitive)
+print('z' not in text)   # True
+```
+
+
+
 
 
 
