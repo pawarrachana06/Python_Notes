@@ -1,4 +1,4 @@
-# Python--Notes
+# Python Notes
 
 ### Python Virtual Environment Guide
 
@@ -43,7 +43,7 @@ pip install -r requirements.txt  # Install dependencies from a file
 ## Syntax and Semantics
 
 
-- syntax refers to the set of rules that defines the combination of symbols that are considered to be correctly strcutured programs in a language.
+- syntax refers to the set of rules that defines the combination of symbols that are considered to be correctly structured programs in a language.
 
 - Semantics refers to the menaing or the interpretation of the symbols,characters,and commends in a language.It is about what the code is supposed to do when it runs.
 
@@ -93,7 +93,11 @@ name="Krish"
 ## Naming conventions
 
 1.Variable name should be descriptive
+
+
 2. They must always start with a letter /underscore and contain letter,number and underscores within them
+
+
 3. variable names are case sensitive.
 
 
@@ -287,6 +291,58 @@ print('hello' in text)   # False (Case-sensitive)
 print('z' not in text)   # True
 ```
 
+### Control flow
+
+Control flow determines the execution order of statements in Python. It includes:
+
+### **1. Conditional Statements (if, elif, else)**
+```python
+x = 10
+if x > 0:
+    print("Positive number")
+elif x == 0:
+    print("Zero")
+else:
+    print("Negative number")
+```
+
+### **2. Loops (for, while)**
+#### **For Loop**
+```python
+for i in range(5):
+    print(i)  # Prints numbers 0 to 4
+```
+
+#### **While Loop**
+```python
+x = 5
+while x > 0:
+    print(x)
+    x -= 1  # Decrement x
+```
+
+### **3. Loop Control Statements**
+#### **Break Statement** (Exits loop)
+```python
+for i in range(5):
+    if i == 3:
+        break  # Stops loop at 3
+    print(i)
+```
+
+#### **Continue Statement** (Skips current iteration)
+```python
+for i in range(5):
+    if i == 3:
+        continue  # Skips 3
+    print(i)
+```
+
+#### **Pass Statement** (Placeholder for future code)
+```python
+def my_function():
+    pass  # Placeholder for implementation
+```
 
 
 
