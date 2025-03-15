@@ -171,6 +171,110 @@ Data types are classification of data which tells the complier or interpreter ho
 They determine the type of operations that can be performed on the data,the values that the data can take, and the amount of memory needed to store the data.
 
 
+### **1. Integer (`int`)**
+- Represents whole numbers (positive, negative, or zero) without a decimal point.
+- In Python, `int` has arbitrary precision (no fixed size like in some other languages).
+
+```python
+x = 10
+print(type(x))  # Output: <class 'int'>
+```
+
+✅ **Use integers when you need to work with whole numbers, like counting items.**
+
+#### **Types of Integer Representations**
+- **Binary (base-2):** `0b1010` (prefix `0b` or `0B` for binary numbers)
+- **Octal (base-8):** `0o12` (prefix `0o` or `0O` for octal numbers)
+- **Hexadecimal (base-16):** `0xA` (prefix `0x` or `0X` for hexadecimal numbers)
+
+```python
+binary_num = 0b1010
+hex_num = 0xA
+print(binary_num, hex_num)  # Output: 10 10
+```
+
+---
+
+### **2. Floating-Point (`float`)**
+- Represents real numbers with decimals.
+- Equivalent to **double precision (64-bit) floating point** in other languages.
+
+```python
+y = 3.14
+print(type(y))  # Output: <class 'float'>
+```
+
+✅ **Use floats when precision with decimal points is required, such as in measurements.**
+
+#### **Special Float Values:**
+- `float('inf')` → Positive infinity
+- `float('-inf')` → Negative infinity
+- `float('nan')` → Not a Number (NaN)
+
+```python
+print(float('inf'), float('-inf'), float('nan'))  # Output: inf -inf nan
+```
+
+---
+
+### **3. String (`str`)**
+- Represents text enclosed in single (`'`), double (`"`), or triple (`'''` `"""`) quotes.
+
+```python
+text = "Hello, Python!"
+print(type(text))  # Output: <class 'str'>
+```
+
+✅ **Use strings when handling textual data, such as names, messages, or file paths.**
+
+---
+
+### **String Operations**
+- **Concatenation:**
+```python
+new_string = text + " Welcome!"
+print(new_string)  # Output: Hello, Python! Welcome!
+```
+- **Repetition:**
+```python
+repeated = "Hi! " * 3
+print(repeated)  # Output: Hi! Hi! Hi! 
+```
+- **Accessing Characters:**
+```python
+print(text[1])  # Output: 'e'
+```
+- **Slicing:**
+```python
+print(text[0:5])  # Output: 'Hello'
+```
+- **Replacing a Substring:**
+```python
+print(text.replace("Python", "World"))  # Output: Hello, World!
+```
+
+✅ **Strings are immutable, meaning their contents cannot be changed after creation.**
+
+---
+
+### **4. Boolean (`bool`)**
+- Represents `True` or `False` values.
+- Internally, `True` is equivalent to `1` and `False` to `0`.
+
+```python
+flag = True
+print(type(flag))  # Output: <class 'bool'>
+```
+
+✅ **Use booleans for conditions, logic checks, and decision-making in programs.**
+
+```python
+print(True + 2)  # Output: 3 (because True is treated as 1)
+print(False * 10)  # Output: 0 (because False is treated as 0)
+```
+
+
+
 ### Operators
 
 Python provides various types of operators:
@@ -510,27 +614,97 @@ print(evens)
 ```
 ---
 
+## **2. Tuple** (Ordered, Immutable, Allows Duplicates, Supports Multiple Types)
 
+Tuples are like lists but immutable (cannot be changed after creation). They can store elements of different data types.
 
+---
 
-## **2. Tuple** (Ordered, Immutable, Allows Duplicates)
-Tuples are like lists but immutable (cannot be changed after creation).
-
-#### **Declaring a Tuple**
+### **Declaring a Tuple**
 ```python
-my_tuple = (1, 2, 3, 4, 5)
+my_tuple = (1, 2.5, "hello", True)
 print(my_tuple)
 ```
-**Operations:**
-- **Accessing Elements:** `print(my_tuple[2])  # Prints 3`
-- **Slicing:** `print(my_tuple[1:3])  # Extracts (2,3)`
-- **Concatenation:** `new_tuple = my_tuple + (6, 7)  # Adds new elements`
+✅ **Output:**
+```
+(1, 2.5, 'hello', True)
+```
+✅ **Tuples can store multiple data types.**
 
-**Output:**
-```
-(1, 2, 3, 4, 5)
-```
 ---
+
+### **Accessing Elements in a Tuple**
+```python
+print(my_tuple[2])  # Prints 'hello'
+```
+✅ Tuples support **zero-based indexing** like lists.
+
+---
+
+### **Tuple Slicing**
+```python
+print(my_tuple[1:3])  # Extracts (2.5, 'hello')
+```
+✅ **Slicing returns a new tuple** containing the selected range.
+
+---
+
+### **Tuple Operations**
+- **Concatenation:**
+```python
+new_tuple = my_tuple + (6, 7)
+print(new_tuple)  # Output: (1, 2.5, 'hello', True, 6, 7)
+```
+- **Repetition:**
+```python
+doubled = my_tuple * 2
+print(doubled)  # Output: (1, 2.5, 'hello', True, 1, 2.5, 'hello', True)
+```
+
+---
+
+### **Tuples Are Immutable**
+```python
+my_tuple[0] = 10  # TypeError: 'tuple' object does not support item assignment
+```
+✅ **Once created, elements cannot be changed.**
+
+---
+
+### **Tuple Methods**
+- **Counting occurrences:**
+```python
+print((1, 2, 3, 1, 1).count(1))  # Output: 3
+```
+- **Finding index of element:**
+```python
+print((1, 2, 3).index(2))  # Output: 1
+```
+
+---
+
+### **Packing & Unpacking Tuples**
+- **Packing:**
+```python
+tuple1 = 10, "apple", 3.5  # Automatically creates a tuple
+```
+- **Unpacking:**
+```python
+a, b, c = tuple1
+print(a, b, c)  # Output: 10 apple 3.5
+```
+✅ Unpacking assigns values **from tuple to variables.**
+
+---
+
+### **Nested Tuples**
+```python
+nested_tuple = ((1, 2, 3), ("a", "b", "c"))
+print(nested_tuple[1][2])  # Output: 'c'
+```
+✅ Tuples can **contain other tuples**, forming a nested structure.
+
+
 
 ## **3. Set** (Unordered, Mutable, No Duplicates)
 A set is used to store unique values in an unordered way.
@@ -738,8 +912,78 @@ dict_comp = {key: value for key, value in iterable}
    print(matrix)
    # Output: {1: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}, 2: {1: 2, 2: 4, 3: 6, 4: 8, 5: 10}, 3: {1: 3, 2: 6, 3: 9, 4: 12, 5: 15}}
    ```
+- Unordered (Dictionaries, Sets) → No Fixed Position
+Elements are stored based on hashing, not index positions.
+You cannot access elements using numeric indexes like in lists.
 
 
+
+## **Merging Dictionaries in Python**
+
+Python provides multiple ways to **merge dictionaries**, each with different behaviors.  
+
+---
+
+### **1. Using `update()` (Modifies the Original Dictionary)**
+```python
+ dict1 = {"a": 1, "b": 2}
+ dict2 = {"b": 3, "c": 4}
+
+ dict1.update(dict2)  
+ print(dict1)  
+ # Output: {'a': 1, 'b': 3, 'c': 4}  (Values from dict2 overwrite dict1)
+```
+✅ **Modifies** `dict1`, updates existing keys, and adds new keys.  
+
+---
+
+### **2. Using `|` Operator (Python 3.9+) (Creates a New Dictionary)**
+```python
+ dict1 = {"a": 1, "b": 2}
+ dict2 = {"b": 3, "c": 4}
+
+ merged_dict = dict1 | dict2  
+ print(merged_dict)  
+ # Output: {'a': 1, 'b': 3, 'c': 4}
+```
+✅ **Creates a new dictionary**, leaving `dict1` and `dict2` unchanged.  
+
+---
+
+### **3. Using `{**dict1, **dict2}` (Unpacks Both Dictionaries)**
+```python
+ dict1 = {"a": 1, "b": 2}
+ dict2 = {"b": 3, "c": 4}
+
+ merged_dict = {**dict1, **dict2}  
+ print(merged_dict)  
+ # Output: {'a': 1, 'b': 3, 'c': 4}
+```
+✅ **Creates a new dictionary**, similar to `|` but works in Python 3.5+.  
+
+---
+
+
+
+
+## **Comparison of Inbuilt Data Structures in Python**
+
+Python provides several inbuilt data structures, each with its own characteristics and use cases.
+
+| Data Structure | Ordered | Mutable | Allows Duplicates | When to Use |
+|---------------|---------|---------|------------------|-------------|
+| **List** | ✅ Yes | ✅ Yes | ✅ Yes | When you need an ordered collection that can be modified. Suitable for dynamic data storage. |
+| **Tuple** | ✅ Yes | ❌ No | ✅ Yes | When you need an ordered but immutable collection. Suitable for fixed data that should not change. |
+| **Set** | ❌ No | ✅ Yes | ❌ No | When you need a collection of unique elements with fast membership checks. Suitable for removing duplicates. |
+| **Dictionary** | ❌ No | ✅ Yes | ✅ Yes (for values) | When you need key-value pairs for quick lookups. Suitable for structured data and mappings. |
+
+### **When to Use What?**
+- **Use a List** when order matters and you need to modify elements frequently.
+- **Use a Tuple** when you need an ordered collection that should remain constant.
+- **Use a Set** when you need unique elements and fast membership testing.
+- **Use a Dictionary** when you need key-value storage with efficient lookups.
+
+Each structure serves a specific purpose, so choosing the right one depends on the problem you're solving.
 ## **5. String** (Immutable, Ordered Sequence of Characters)
 A string is a sequence of characters enclosed in quotes.
 
