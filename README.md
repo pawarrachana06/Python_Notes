@@ -389,11 +389,14 @@ print(my_list)
 In Python slicing notation [start:stop:step], each part represents:
 
 start – The index where the slice begins (inclusive).
+
 stop – The index where the slice ends (exclusive).
+
 step – The interval between elements (default is 1)
 
 
 Simple Analogy: Why is print(my_list[1:8:-1]) Empty?
+
 Imagine you're standing on step 1 of a staircase, and someone tells you:
 
 🚶‍♂️ "Walk backward (-1 step) until you reach step 8."
@@ -547,32 +550,195 @@ print(my_set)
 - **Symmetric difference:** `set_a.symmetric_differnece(set_b) # unqiue elements from both the set `
 - **Is Subset:** `set_a.issubset(set_b) # if all elements of  set a are there in  b`
 
+- ❌ You cannot update a set element directly.
+
+  
+✅ You can remove an old value and add a new one instead.
+
+❌ Sets are mutable, but they can only store immutable elements.
+
+
+✅ Frozensets are immutable (unchangeable).
+
+``` python
+
+frozen_set = frozenset({1, 2, 3})
+frozen_set.add(4)  # ❌ ERROR: Cannot modify a frozenset
+
+```
+
 ✅ Subset (<=) → All elements of A are in B.
+
 ✅ Superset (>=) → B contains all elements of A.
+
 ✅ Proper Subset (<) → A ⊂ B but A ≠ B.
+
 ✅ Proper Superset (>) → B ⊃ A but B ≠ A.
 
 ---
 
-## **4. Dictionary** (Unordered, Mutable, Key-Value Pairs)
+## **Dictionary in Python (unordered and mutable)**
+
 A dictionary is a collection of key-value pairs where keys must be unique.
 
-#### **Declaring a Dictionary**
+### **Declaring a Dictionary**
 ```python
 my_dict = {"name": "Alice", "age": 25}
 print(my_dict)
 ```
-**Operations:**
-- **Adding Key-Value Pairs:** `my_dict["city"] = "New York"`
-- **Updating Values:** `my_dict["age"] = 30  # Changes age to 30`
-- **Removing Elements:** `del my_dict["age"]  # Deletes age`
-- **Getting Keys & Values:** `print(my_dict.keys())`, `print(my_dict.values())`
 
-**Output:**
+or 
+
+```python
+empty_dict = dict()
 ```
-{'name': 'Alice', 'age': 25}
+
+### **Accessing Dictionary Elements**
+```python
+print(my_dict["name"])  # Output: Alice
+print(my_dict.get("age","default value"))  # Output: 25
 ```
----
+
+### **Modifying a Dictionary**
+- **Adding Key-Value Pairs:**
+  ```python
+  my_dict["city"] = "New York"
+  ```
+- **Updating Values:**
+  ```python
+  my_dict["age"] = 30  # Changes age to 30
+  ```
+- **Removing Elements:**
+  ```python
+  del my_dict["age"]  # Deletes age
+  my_dict.pop("name")  # Removes 'name' key
+  my_dict.clear()  # Removes all elements
+  ```
+
+### **Dictionary Methods**
+```python
+my_dict = {"name": "Alice", "age": 25, "city": "New York"}
+```
+
+| Method | Description | Example | Output |
+|--------|-------------|-------------|-------------|
+| `keys()` | Returns all keys in the dictionary | `my_dict.keys()` | `dict_keys(['name', 'age', 'city'])` |
+| `values()` | Returns all values in the dictionary | `my_dict.values()` | `dict_values(['Alice', 25, 'New York'])` |
+| `items()` | Returns key-value pairs as tuples | `my_dict.items()` | `dict_items([('name', 'Alice'), ('age', 25), ('city', 'New York')])` |
+| `get(key)` | Retrieves a value by key | `my_dict.get("name")` | `Alice` |
+| `update()` | Merges another dictionary into current one | `my_dict.update({"gender": "female"})` | `{..., 'gender': 'female'}` |
+| `pop(key)` | Removes and returns a value by key | `my_dict.pop("age")` | `25` |
+| `clear()` | Removes all key-value pairs | `my_dict.clear()` | `{}` |
+
+### **Dictionary Operators:**
+| Operator | Description | Example | Output |
+|----------|-------------|-------------|-------------|
+| `in` | Checks if a key exists in the dictionary | `'name' in my_dict` | `True` |
+| `not in` | Checks if a key is not in the dictionary | `'gender' not in my_dict` | `False` |
+| `==` | Checks if two dictionaries are equal | `dict1 == dict2` | `True` or `False` |
+| `!=` | Checks if two dictionaries are not equal | `dict1 != dict2` | `True` or `False` |
+
+Dictionaries are powerful for storing and accessing key-value data efficiently in Python.
+
+
+
+### **Normal Copy vs Shallow Copy vs Deep Copy in Dictionary**
+
+#### **Normal Copy:**
+A **normal copy** creates a new dictionary but does not duplicate nested objects.
+
+##### **Example:**
+```python
+original = {"name": "Alice", "age": 25}
+copied_dict = original  # Normal copy (reference to the same object)
+copied_dict["age"] = 30
+
+print(original["age"])  # Output: 30 (Changes reflect in the original dictionary)
+```
+
+**Explanation:**
+- `copied_dict = original` only assigns a reference, meaning both variables point to the same dictionary.
+- Modifications in `copied_dict` affect `original` as well.
+
+#### **Shallow Copy:**
+A **shallow copy** creates a new dictionary but still references mutable objects inside it.
+
+##### **Example:**
+```python
+import copy
+
+original = {"name": "Alice", "details": {"age": 25, "city": "New York"}}
+shallow_copy = original.copy()
+
+shallow_copy["details"]["age"] = 30
+print(original["details"]["age"])  # Output: 30
+```
+
+**Explanation:**
+- `copy()` creates a new dictionary, but the nested dictionary inside it is still referenced, not duplicated.
+- Changing `shallow_copy["details"]["age"]` also affects `original`.
+
+#### **Deep Copy:**
+A **deep copy** creates a completely independent copy, including all nested structures.
+
+##### **Example:**
+```python
+import copy
+
+deep_copy = copy.deepcopy(original)
+deep_copy["details"]["age"] = 35
+
+print(original["details"]["age"])  # Output: 30 (unchanged)
+```
+
+**Key Differences:**
+| Type | Copy Behavior | Nested Objects Affected? |
+|------|--------------|-------------------------|
+| Normal Copy | Reference assignment | Yes (Changes reflect in both) |
+| Shallow Copy | Creates a new dictionary but keeps references for nested objects | Yes (Changes in nested objects affect both) |
+| Deep Copy | Completely duplicates everything | No (Completely independent copy) |
+
+
+
+### **Dictionary Comprehension**
+
+Dictionary comprehension allows creating dictionaries in a concise way.
+
+#### **Basic Syntax:**
+```python
+dict_comp = {key: value for key, value in iterable}
+```
+
+#### **Examples:**
+1. **Creating a dictionary from a list:**
+   ```python
+   nums = [1, 2, 3, 4]
+   squares = {num: num**2 for num in nums}
+   print(squares)  # Output: {1: 1, 2: 4, 3: 9, 4: 16}
+   ```
+
+2. **Filtering elements:**
+   ```python
+   nums = range(10)
+   even_squares = {num: num**2 for num in nums if num % 2 == 0}
+   print(even_squares)  # Output: {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+   ```
+
+3. **Using `zip()` to combine two lists into a dictionary:**
+   ```python
+   keys = ["name", "age", "city"]
+   values = ["Alice", 25, "New York"]
+   merged_dict = {k: v for k, v in zip(keys, values)}
+   print(merged_dict)  # Output: {'name': 'Alice', 'age': 25, 'city': 'New York'}
+   ```
+
+4. **Nested Dictionary Comprehension:**
+   ```python
+   matrix = {row: {col: row * col for col in range(1, 6)} for row in range(1, 4)}
+   print(matrix)
+   # Output: {1: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}, 2: {1: 2, 2: 4, 3: 6, 4: 8, 5: 10}, 3: {1: 3, 2: 6, 3: 9, 4: 12, 5: 15}}
+   ```
+
 
 ## **5. String** (Immutable, Ordered Sequence of Characters)
 A string is a sequence of characters enclosed in quotes.
