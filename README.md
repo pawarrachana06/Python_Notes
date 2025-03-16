@@ -1471,6 +1471,143 @@ print(response.status_code)
 
 
 
+# **Standard Python Library**
+
+Python's **Standard Library** is a collection of built-in modules that provide powerful functionalities without needing external dependencies.
+
+---
+
+## **1. Built-in Functions**
+Python provides several built-in functions such as:
+- `print()`, `len()`, `type()`, `input()`
+- `max()`, `min()`, `sum()`
+- `sorted()`, `enumerate()`, `zip()`
+
+Example:
+```python
+print(len("Hello"))  # Output: 5
+```
+
+---
+
+## **2. OS Module** *(Interacting with the Operating System)*
+```python
+import os
+print(os.name)  # Returns OS name
+```
+
+---
+
+## **3. Sys Module** *(System-Specific Parameters & Functions)*
+```python
+import sys
+print(sys.version)  # Outputs Python version
+```
+
+---
+
+## **4. Math Module** *(Mathematical Functions)*
+```python
+import math
+print(math.sqrt(25))  # Output: 5.0
+```
+
+---
+
+## **5. Random Module** *(Generating Random Numbers)*
+```python
+import random
+print(random.randint(1, 10))  # Outputs a random number between 1-10
+```
+
+---
+
+## **6. Datetime Module** *(Working with Dates & Time)*
+```python
+from datetime import datetime
+print(datetime.now())  # Outputs current date & time
+```
+
+---
+
+## **7. JSON Module** *(Handling JSON Data)*
+```python
+import json
+my_dict = {"name": "Alice", "age": 25}
+json_data = json.dumps(my_dict)  # Convert dictionary to JSON string
+print(json_data)
+```
+
+---
+
+## **8. Collections Module** *(Advanced Data Structures)*
+```python
+from collections import Counter
+print(Counter("banana"))  # Counts occurrences of elements
+```
+
+---
+
+## **9. RE (Regular Expressions) Module** *(Pattern Matching)*
+```python
+import re
+match = re.search(r"\d+", "Order 123")  # Finds numbers in text
+print(match.group())  # Output: 123
+```
+
+---
+
+## **10. OS Path Module** *(File Path Handling)*
+```python
+import os
+print(os.path.exists("file.txt"))  # Checks if file exists
+```
+
+---
+
+## **11. Urllib Module** *(Handling URLs & HTTP Requests)*
+```python
+import urllib.request
+response = urllib.request.urlopen("https://www.google.com")
+print(response.status)  # Output: 200 (OK)
+```
+
+---
+
+## **12. Logging Module** *(Logging Messages)*
+```python
+import logging
+logging.warning("This is a warning!")  # Logs a warning message
+```
+
+---
+
+## **13. CSV Module** *(Reading & Writing CSV Files)*
+```python
+import csv
+with open("data.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age"])
+    writer.writerow(["Alice", 25])
+```
+
+---
+
+## **14. Time Module** *(Handling Time-Related Tasks)*
+```python
+import time
+time.sleep(2)  # Pauses execution for 2 seconds
+print("Done!")
+```
+
+---
+
+## **15. Statistics Module** *(Performing Statistical Calculations)*
+```python
+import statistics
+print(statistics.mean([1, 2, 3, 4, 5]))  # Output: 3.0
+```
+
 
 
 
