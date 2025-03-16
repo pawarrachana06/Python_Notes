@@ -984,29 +984,8 @@ Python provides several inbuilt data structures, each with its own characteristi
 - **Use a Dictionary** when you need key-value storage with efficient lookups.
 
 Each structure serves a specific purpose, so choosing the right one depends on the problem you're solving.
-## **5. String** (Immutable, Ordered Sequence of Characters)
-A string is a sequence of characters enclosed in quotes.
 
-#### **Slicing a String**
-```python
-my_string = "Hello, World!"
-print(my_string[0:5])  # Extracts 'Hello'
-print(my_string[::-1])  # Reverses the string
-print(my_string[-6:-1]) # Extracts 'World'
-```
-**Operations:**
-- **Concatenation:** `new_string = my_string + " Python"  # Adds new text`
-- **Replacing Substrings:** `new_string.replace("Hello", "Hi")`
-- **Splitting:** `words = new_string.split(" ")  # Splits by space`
-- **Changing Case:** `print(my_string.upper())`, `print(my_string.lower())`
 
-**Output:**
-```
-Hello
-!dlroW ,olleH
-World
-```
----
 
 ### **Why does `fruits[1:] = "watermelon"` split the word?**
 When assigning a string to a slice of a list, Python treats the string as a sequence of characters and inserts each character separately into the list. Example:
@@ -1022,3 +1001,149 @@ print(fruits)
 **Explanation:** Instead of replacing the entire slice with one string, Python breaks the string into its individual characters and inserts them into the list.
 
 These data structures help in different scenarios, such as storing collections of items, ensuring uniqueness, or mapping keys to values.
+
+
+## **Functions in Python**
+Functions in Python help in organizing code into reusable blocks. They improve readability, reduce redundancy, and make programs modular.
+
+### **Why Use Functions?**
+- Avoid repetition by reusing code
+- Improve readability and maintainability
+- Simplify debugging and modifications
+- Enable modular programming
+
+---
+
+### **1. Syntax of a Function**
+A function is defined using the `def` keyword, followed by its name, parameters (if any), and a colon. The function body is indented.
+
+```python
+def function_name(parameters):
+    """Optional docstring explaining the function."""
+    statement(s)
+    return value  # Optional return statement
+```
+
+---
+
+### **2. Defining a Function**
+A simple function that prints a greeting message.
+
+```python
+def greet():
+    """This function prints a greeting message."""
+    print("Hello, World!")
+```
+
+---
+
+### **3. Calling a Function**
+To execute a function, call it by its name followed by parentheses `()`.
+
+```python
+greet()  # Output: Hello, World!
+```
+
+---
+
+### **4. Function Parameters**
+Functions can take parameters (input values) to process data.
+
+```python
+def greet_user(name):
+    """This function greets the user by name."""
+    print(f"Hello, {name}!")
+
+greet_user("Alice")  # Output: Hello, Alice!
+```
+
+---
+
+### **5. Positional Arguments**
+Positional arguments are passed in the order they are defined in the function.
+
+```python
+def full_name(first, last):
+    """Displays the full name by combining first and last name."""
+    print(f"Full Name: {first} {last}")
+
+full_name("John", "Doe")  # Output: Full Name: John Doe
+```
+
+---
+
+### **6. Default Parameters**
+If a parameter is not provided, a default value is used.
+
+```python
+def greet_user(name="Guest"):
+    """Greets the user, using 'Guest' as default if no name is provided."""
+    print(f"Hello, {name}!")
+
+greet_user()       # Output: Hello, Guest!
+greet_user("Bob")  # Output: Hello, Bob!
+```
+
+---
+
+### **7. Variable-Length Arguments**
+- `*args` allows multiple positional arguments. 
+- `**kwargs` allows multiple keyword arguments. (key,value pairs)
+
+NOTE : Positional comes before keyword arguments
+
+
+```python
+def add_numbers(*args):
+    """Returns the sum of all provided numbers."""
+    return sum(args)
+
+print(add_numbers(1, 2, 3, 4))  # Output: 10
+```
+
+```python
+def user_info(**kwargs):
+    """Prints user information from keyword arguments."""
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+user_info(name="Alice", age=25)  
+# Output:
+# name: Alice
+# age: 25
+```
+
+---
+
+### **8. Return Statement**
+A function can return a value using the `return` keyword.
+
+```python
+def square(num):
+    """Returns the square of a given number."""
+    return num * num
+
+result = square(5)
+print(result)  # Output: 25
+```
+
+---
+
+### **9. Function with Docstring**
+A docstring is a multi-line string that provides documentation for a function.
+
+```python
+def multiply(a, b):
+    """This function multiplies two numbers and returns the result."""
+    return a * b
+
+print(multiply(3, 4))  # Output: 12
+```
+
+
+
+
+
+
+
+
