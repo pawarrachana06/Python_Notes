@@ -1360,6 +1360,116 @@ print(pattern.findall(text))  # Output: ['123', '456']
 Regular expressions are powerful tools for handling text efficiently. With `re` module functions like `match()`, `search()`, `findall()`, `sub()`, and `split()`, you can manipulate and extract patterns with ease.
 
 
+# **Modules and Packages in Python**
+
+## **1. What are Modules?**
+A module is a Python file containing reusable code (functions, classes, variables). It helps organize code into separate files for better readability and maintainability.
+
+### **a) Creating a Module**
+Save the following code in a file named `my_module.py`:
+```python
+# my_module.py
+def greet(name):
+    return f"Hello, {name}!"
+```
+
+### **b) Importing a Module**
+```python
+import my_module
+print(my_module.greet("Alice"))  # Output: Hello, Alice!
+```
+
+### **c) Importing Specific Functions**
+```python
+from my_module import greet
+print(greet("Bob"))  # Output: Hello, Bob!
+```
+
+### **d) Using Aliases**
+```python
+import my_module as mm
+print(mm.greet("Charlie"))  # Output: Hello, Charlie!
+```
+
+### **e) Built-in Modules**
+Python comes with many built-in modules like `math`, `random`, and `os`.
+```python
+import math
+print(math.sqrt(16))  # Output: 4.0
+```
+
+---
+
+## **2. What are Packages?**
+A package is a collection of modules organized in directories containing a special `__init__.py` file (optional in Python 3+).
+
+### **a) Creating a Package**
+1. Create a directory `my_package/`.
+2. Inside `my_package/`, create `__init__.py` (empty or containing package initialization code).
+3. Add a module `module1.py`:
+```python
+# my_package/module1.py
+def say_hello():
+    return "Hello from module1!"
+```
+
+### **b) Importing a Module from a Package**
+```python
+from my_package import module1
+print(module1.say_hello())  # Output: Hello from module1!
+```
+
+### **c) Importing Using `from ... import`**
+```python
+from my_package.module1 import say_hello
+print(say_hello())  # Output: Hello from module1!
+```
+
+### **d) Nested Packages**
+Packages can contain sub-packages:
+```
+my_package/
+    __init__.py
+    sub_package/
+        __init__.py
+        module2.py
+```
+Importing a sub-package module:
+```python
+from my_package.sub_package import module2
+```
+
+---
+
+## **3. Difference Between Modules and Packages**
+| Feature  | Module | Package |
+|----------|--------|---------|
+| Definition | A single Python file | A collection of modules in a directory |
+| Structure | `.py` file | Folder with `__init__.py` |
+| Example | `math.py` | `numpy` package |
+
+---
+
+## **4. Installing External Packages**
+Use `pip` to install third-party packages from PyPI.
+```sh
+pip install requests
+```
+Using the installed package:
+```python
+import requests
+response = requests.get("https://api.github.com")
+print(response.status_code)
+```
+
+---
+
+- Modules allow code reuse and better organization.
+- Packages group related modules into directories.
+- Use `import` to access modules and packages.
+- Use `pip` to install third-party packages.
+
+
 
 
 
