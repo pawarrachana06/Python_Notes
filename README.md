@@ -1140,7 +1140,224 @@ def multiply(a, b):
 print(multiply(3, 4))  # Output: 12
 ```
 
+# **Lambda, Map, and Filter in Python**
 
+## **1. Lambda Functions**
+Lambda functions are anonymous functions in Python that can have any number of arguments but only one expression.
+
+### **Syntax:**
+```python
+lambda arguments: expression
+```
+
+### **Example:**
+```python
+square = lambda x: x * x
+print(square(5))  # Output: 25
+```
+
+---
+
+## **2. `map()` Function**
+The `map()` function applies a given function to all items in an iterable.
+
+### **Syntax:**
+```python
+map(function, iterable)
+```
+
+### **Example:**
+```python
+numbers = [1, 2, 3, 4]
+squared_numbers = list(map(lambda x: x ** 2, numbers))
+print(squared_numbers)  # Output: [1, 4, 9, 16]
+```
+
+---
+
+## **3. `filter()` Function**
+The `filter()` function filters elements based on a condition.
+
+### **Syntax:**
+```python
+filter(function, iterable)
+```
+
+### **Example:**
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Output: [2, 4, 6]
+```
+
+---
+
+## **Conclusion**
+- `lambda` is used to create small, one-line anonymous functions.
+- `map()` applies a function to all elements in an iterable.
+- `filter()` selects elements based on a condition.
+
+These functions help in writing concise and efficient code.
+
+
+
+
+# **Regular Expressions (Regex) in Python**
+Regular Expressions (regex) are patterns used to match and manipulate strings efficiently. They help in searching, extracting, and modifying text data.
+
+## **Why Use Regex?**
+- Efficient text searching and pattern matching
+- Data validation (e.g., emails, phone numbers)
+- Text extraction and replacement
+- Splitting text based on patterns
+
+---
+
+## **1. Importing the `re` Module**
+Python provides the `re` module to work with regex.
+```python
+import re
+```
+
+---
+
+## **2. Basic Regex Functions**
+
+### **a) `re.match()` - Matches at the beginning of the string**
+```python
+import re
+text = "Hello World"
+match = re.match(r"Hello", text)
+print(bool(match))  # Output: True
+```
+
+### **b) `re.search()` - Searches anywhere in the string**
+```python
+import re
+text = "Welcome to Regex in Python"
+search = re.search(r"Regex", text)
+print(bool(search))  # Output: True
+```
+
+### **c) `re.findall()` - Finds all matches**
+```python
+import re
+text = "123 apple, 456 banana, 789 cherry"
+numbers = re.findall(r"\d+", text)
+print(numbers)  # Output: ['123', '456', '789']
+```
+
+### **d) `re.sub()` - Replaces text using regex**
+```python
+import re
+text = "I love cats. Cats are cute."
+new_text = re.sub(r"cats", "dogs", text, flags=re.IGNORECASE)
+print(new_text)  # Output: "I love dogs. Dogs are cute."
+```
+
+---
+
+## **3. Special Characters in Regex**
+
+| Symbol | Meaning |
+|--------|---------|
+| `.` | Any character except newline |
+| `^` | Start of string |
+| `$` | End of string |
+| `*` | 0 or more occurrences |
+| `+` | 1 or more occurrences |
+| `?` | 0 or 1 occurrence |
+| `{n}` | Exactly n occurrences |
+| `{n,}` | At least n occurrences |
+| `{n,m}` | Between n and m occurrences |
+| `\d` | Any digit (0-9) |
+| `\D` | Any non-digit |
+| `\w` | Any alphanumeric character |
+| `\W` | Any non-alphanumeric character |
+| `\s` | Any whitespace |
+| `\S` | Any non-whitespace |
+
+---
+
+## **4. Character Classes & Groups**
+
+### **a) Character Classes (`[]`)**
+```python
+import re
+text = "The price is 500 dollars."
+match = re.findall(r"[0-9]+", text)
+print(match)  # Output: ['500']
+```
+
+### **b) Grouping (`()`)**
+```python
+import re
+text = "My phone number is (123) 456-7890"
+match = re.search(r"\((\d{3})\) (\d{3})-(\d{4})", text)
+print(match.groups())  # Output: ('123', '456', '7890')
+```
+
+---
+
+## **5. Lookaheads & Lookbehinds**
+Used to match patterns without including them in the result.
+
+### **a) Positive Lookahead (`?=`)**
+```python
+import re
+text = "apple123 banana456 cherry789"
+match = re.findall(r"\w+(?=\d+)", text)
+print(match)  # Output: ['apple', 'banana', 'cherry']
+```
+
+### **b) Negative Lookahead (`?!`)**
+```python
+import re
+text = "apple123 banana apple456 cherry"
+match = re.findall(r"apple(?!\d+)", text)
+print(match)  # Output: ['apple']
+```
+
+### **c) Positive Lookbehind (`?<=`)**
+```python
+import re
+text = "$10 $20 €30 €40"
+match = re.findall(r"(?<=\$)\d+", text)
+print(match)  # Output: ['10', '20']
+```
+
+### **d) Negative Lookbehind (`?<!`)**
+```python
+import re
+text = "$10 $20 €30 €40"
+match = re.findall(r"(?<!\$)\d+", text)
+print(match)  # Output: ['30', '40']
+```
+
+---
+
+## **6. Splitting Strings with `re.split()`**
+```python
+import re
+text = "apple,banana;cherry|grape"
+words = re.split(r"[,;|]", text)
+print(words)  # Output: ['apple', 'banana', 'cherry', 'grape']
+```
+
+---
+
+## **7. Compiling Regex for Efficiency**
+```python
+import re
+pattern = re.compile(r"\d+")
+text = "Order 123, Item 456"
+print(pattern.findall(text))  # Output: ['123', '456']
+```
+
+---
+
+## **Conclusion**
+Regular expressions are powerful tools for handling text efficiently. With `re` module functions like `match()`, `search()`, `findall()`, `sub()`, and `split()`, you can manipulate and extract patterns with ease.
 
 
 
