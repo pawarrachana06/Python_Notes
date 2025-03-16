@@ -1609,5 +1609,32 @@ print(statistics.mean([1, 2, 3, 4, 5]))  # Output: 3.0
 ```
 
 
+# **File Hnadling In Python**
+
+
+
+# **Exception Handling in Python**
+
+
+
+# **OOPS Concepts with Classes and Objects**
+
+
+
+# **Recursion**
+
+
+
+# **Data Analysis**
+
+
+
+# **Working with sqlite and python**
+
+
+# **Introduction to Multi Threading**
+
+
+# **Logging**
 
 
