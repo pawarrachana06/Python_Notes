@@ -1695,8 +1695,214 @@ else:
 This guide covers essential file operations in Python for reading, writing, appending, and handling files efficiently.
 
 
+
 # **Exception Handling in Python**
 
+## **1. Understanding Exceptions**
+Exceptions are runtime errors that disrupt the normal flow of a program. Unlike syntax errors, exceptions occur when the code is syntactically correct but an operation fails during execution.
+
+## **2. Difference Between Errors and Exceptions**
+- **Errors**: Irrecoverable issues like syntax errors (e.g., missing colons, incorrect indentation).
+- **Exceptions**: Recoverable issues that can be handled using exception-handling mechanisms (e.g., division by zero, accessing an undefined variable).
+
+## **3. Common Types of Exceptions**
+| Exception | Description |
+|-----------|-------------|
+| `ZeroDivisionError` | Division by zero error |
+| `ValueError` | Invalid value (e.g., converting letters to integers) |
+| `TypeError` | Incompatible operation between types |
+| `IndexError` | Accessing an index out of range in lists/tuples |
+| `KeyError` | Accessing a non-existent dictionary key |
+| `FileNotFoundError` | Trying to open a file that doesn't exist |
+| `AttributeError` | Accessing an invalid attribute of an object |
+
+## **4. Basic Exception Handling**
+```python
+try:
+    x = 10 / 0  # Division by zero error
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+```
+### **Output:**
+```
+Cannot divide by zero!
+```
+
+## **5. Handling Multiple Exceptions**
+```python
+try:
+    num = int("abc")  # Invalid conversion
+except (ValueError, TypeError):
+    print("Invalid input type!")
+```
+### **Output:**
+```
+Invalid input type!
+```
+
+## **6. Using `else` with `try-except`**
+The `else` block executes only if no exception occurs in the `try` block.
+```python
+try:
+    num = int("42")
+except ValueError:
+    print("Invalid number!")
+else:
+    print("Conversion successful!", num)
+```
+### **Output:**
+```
+Conversion successful! 42
+```
+
+## **7. Using `finally` Block**
+The `finally` block always executes, regardless of an exception occurring or not.
+```python
+try:
+    file = open("test.txt", "w")
+    file.write("Hello!")
+except IOError:
+    print("File error!")
+finally:
+    file.close()
+    print("File closed.")
+```
+### **Output:**
+```
+File closed.
+```
+
+## **8. Difference Between `else` and `finally`**
+- `else` executes only if no exception occurs.
+- `finally` executes no matter what (whether an exception occurs or not).
+
+## **9. Raising Custom Exceptions**
+```python
+try:
+    age = -5
+    if age < 0:
+        raise ValueError("Age cannot be negative!")
+except ValueError as e:
+    print("Error:", e)
+```
+### **Output:**
+```
+Error: Age cannot be negative!
+```
+
+## **10. Defining Custom Exceptions**
+```python
+class CustomError(Exception):
+    """A custom exception class."""
+    def __init__(self, message):
+        super().__init__(message)
+
+try:
+    raise CustomError("This is a custom error!")
+except CustomError as e:
+    print("Caught Exception:", e)
+```
+### **Output:**
+```
+Caught Exception: This is a custom error!
+```
+
+## **11. More Examples of Custom Exceptions**
+### **Custom Exception with Additional Attributes**
+```python
+class AgeError(Exception):
+    """Exception raised for invalid age."""
+    def __init__(self, age, message="Age must be between 0 and 120"):
+        self.age = age
+        self.message = message
+        super().__init__(self.message)
+
+try:
+    age = 150
+    if age > 120:
+        raise AgeError(age)
+except AgeError as e:
+    print(f"Invalid age {e.age}: {e.message}")
+```
+### **Output:**
+```
+Invalid age 150: Age must be between 0 and 120
+```
+
+### **Custom Exception for File Handling**
+```python
+class FileExtensionError(Exception):
+    """Raised when the file extension is not allowed."""
+    def __init__(self, filename, allowed_extensions):
+        self.filename = filename
+        self.allowed_extensions = allowed_extensions
+        super().__init__(f"Invalid file type: {filename}. Allowed extensions are {allowed_extensions}.")
+
+try:
+    filename = "document.exe"
+    if not filename.endswith((".txt", ".csv")):
+        raise FileExtensionError(filename, [".txt", ".csv"])
+except FileExtensionError as e:
+    print(e)
+```
+### **Output:**
+```
+Invalid file type: document.exe. Allowed extensions are ['.txt', '.csv'].
+```
+
+## **12. More Custom Exception Examples**
+### **Custom Exception for Negative Bank Balance**
+```python
+class NegativeBalanceError(Exception):
+    """Raised when an account balance goes negative."""
+    def __init__(self, balance):
+        self.balance = balance
+        super().__init__(f"Balance cannot be negative: {balance}")
+
+try:
+    balance = -100
+    if balance < 0:
+        raise NegativeBalanceError(balance)
+except NegativeBalanceError as e:
+    print(e)
+```
+### **Output:**
+```
+Balance cannot be negative: -100
+```
+
+### **Custom Exception for Invalid Email Format**
+```python
+import re
+
+class InvalidEmailError(Exception):
+    """Raised when an email format is invalid."""
+    def __init__(self, email):
+        self.email = email
+        super().__init__(f"Invalid email format: {email}")
+
+def validate_email(email):
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    if not re.match(pattern, email):
+        raise InvalidEmailError(email)
+
+try:
+    validate_email("invalid-email")
+except InvalidEmailError as e:
+    print(e)
+```
+### **Output:**
+```
+Invalid email format: invalid-email
+```
+
+## **13. Best Practices for Exception Handling**
+- Always handle exceptions gracefully to prevent program crashes.
+- Use specific exception types rather than a generic `except:` clause.
+- Keep error messages meaningful to improve debugging.
+- Use `finally` to release resources (e.g., closing files, database connections).
+- Avoid using exceptions for normal control flow.
+- Create custom exceptions when built-in exceptions are not enough.
 
 
 # **OOPS Concepts with Classes and Objects**
