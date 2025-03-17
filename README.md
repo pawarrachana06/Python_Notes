@@ -1608,9 +1608,91 @@ import statistics
 print(statistics.mean([1, 2, 3, 4, 5]))  # Output: 3.0
 ```
 
+# **File Operations in Python**
 
-# **File Hnadling In Python**
+## **1. Opening a File**
+Python provides the `open()` function to open files in different modes.
+```python
+file = open("example.txt", "r")  # Opens a file in read mode
+```
 
+## **2. File Modes**
+| Mode  | Description |
+|------|-------------|
+| `r`  | Read (default) – Opens a file for reading (error if file doesn’t exist) |
+| `w`  | Write – Creates a new file or overwrites existing file |
+| `a`  | Append – Opens file for appending new content |
+| `x`  | Create – Creates a new file (error if file exists) |
+| `b`  | Binary mode (used with other modes like `rb`, `wb`) |
+| `t`  | Text mode (default, used with `r`, `w`, etc.) |
+| `r+` | Read & Write – Reads and updates a file (error if file doesn’t exist) |
+| `w+` | Write & Read – Overwrites file if exists, otherwise creates a new one |
+| `a+` | Append & Read – Appends data to file and allows reading |
+
+## **3. Reading a File (`r` Mode)**
+```python
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+```
+
+## **4. Writing to a File (`w` Mode)**
+```python
+with open("example.txt", "w") as file:
+    file.write("Hello, World!")
+```
+**Note:** This will overwrite existing content.
+
+## **5. Appending to a File (`a` Mode)**
+```python
+with open("example.txt", "a") as file:
+    file.write("\nAppending new line")
+```
+
+## **6. Writing and Reading (`w+` Mode)**
+```python
+with open("example.txt", "w+") as file:
+    file.write("New content")
+    file.seek(0)  # Move cursor to beginning
+    print(file.read())
+```
+
+## **7. Reading and Writing (`r+` Mode)**
+```python
+with open("example.txt", "r+") as file:
+    print(file.read())  # Read existing content
+    file.write("New Line")  # Append new content
+```
+
+## **8. Appending and Reading (`a+` Mode)**
+```python
+with open("example.txt", "a+") as file:
+    file.write("\nMore data")
+    file.seek(0)
+    print(file.read())
+```
+
+## **9. Deleting a File**
+```python
+import os
+os.remove("example.txt")  # Deletes the file
+```
+
+## **10. Checking if a File Exists Before Deleting**
+```python
+if os.path.exists("example.txt"):
+    os.remove("example.txt")
+else:
+    print("File does not exist")
+```
+
+## **11. Best Practices**
+- Always use `with open()` to handle files to avoid manual closing.
+- Use `try-except` blocks to handle errors gracefully.
+- Ensure file existence before performing delete operations.
+
+---
+This guide covers essential file operations in Python for reading, writing, appending, and handling files efficiently.
 
 
 # **Exception Handling in Python**
