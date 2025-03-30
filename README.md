@@ -1199,6 +1199,172 @@ print(even_numbers)  # Output: [2, 4, 6]
 
 These functions help in writing concise and efficient code.
 
+# **Type Conversion in Python**
+
+## **1. Introduction**
+Type conversion in Python allows you to change the data type of a variable from one type to another. There are two types of conversions:
+- **Implicit Conversion** (Automatic by Python)
+- **Explicit Conversion** (Manually using built-in functions)
+
+---
+
+## **2. Implicit Type Conversion**
+Python automatically converts one data type to another where necessary, without losing data.
+
+### **Example:**
+```python
+x = 5  # Integer
+y = 2.5  # Float
+z = x + y  # Python converts x into float
+print(z, type(z))  # Output: 7.5 <class 'float'>
+```
+---
+
+## **3. Explicit Type Conversion**
+Explicit conversion is done using built-in functions like `int()`, `float()`, `str()`, etc.
+
+### **Example:**
+```python
+num = "123"
+num_int = int(num)  # Converts string to integer
+print(num_int, type(num_int))  # Output: 123 <class 'int'>
+```
+
+### **Common Type Conversion Functions:**
+| Function | Description |
+|----------|-------------|
+| `int(x)` | Converts x to an integer |
+| `float(x)` | Converts x to a floating-point number |
+| `str(x)` | Converts x to a string |
+| `list(x)` | Converts x to a list |
+| `tuple(x)` | Converts x to a tuple |
+| `dict(x)` | Converts x to a dictionary |
+| `set(x)` | Converts x to a set |
+| `bool(x)` | Converts x to a boolean |
+
+---
+
+## **4. JSON Conversions**
+### **Converting Python Objects to JSON (Serialization)**
+Python provides the `json` module to work with JSON.
+
+#### **Example using `json.dumps()`**
+```python
+import json
+data = {"name": "Alice", "age": 25}
+json_data = json.dumps(data)  # Convert dictionary to JSON string
+print(json_data)  # Output: {"name": "Alice", "age": 25}
+```
+
+### **Converting JSON to Python Objects (Deserialization)**
+#### **Example using `json.loads()`**
+```python
+json_string = '{"name": "Alice", "age": 25}'
+python_obj = json.loads(json_string)  # Convert JSON string to dictionary
+print(python_obj, type(python_obj))  # Output: {'name': 'Alice', 'age': 25} <class 'dict'>
+```
+---
+
+## **5. Joining and Splitting Strings**
+
+### **Joining a List into a String using `join()`**
+```python
+words = ["Hello", "World"]
+joined_string = " ".join(words)
+print(joined_string)  # Output: Hello World
+```
+
+### **Splitting a String into a List using `split()`**
+```python
+text = "Hello,World,Python"
+words = text.split(",")
+print(words)  # Output: ['Hello', 'World', 'Python']
+```
+---
+
+## **6. Tuple to List and Vice Versa**
+
+### **Converting Tuple to List**
+```python
+tuple_data = (1, 2, 3)
+list_data = list(tuple_data)
+print(list_data, type(list_data))  # Output: [1, 2, 3] <class 'list'>
+```
+
+### **Converting List to Tuple**
+```python
+list_data = [1, 2, 3]
+tuple_data = tuple(list_data)
+print(tuple_data, type(tuple_data))  # Output: (1, 2, 3) <class 'tuple'>
+```
+---
+
+## **7. Integer to String and Vice Versa**
+
+### **Converting Integer to String**
+```python
+num = 100
+str_num = str(num)
+print(str_num, type(str_num))  # Output: '100' <class 'str'>
+```
+
+### **Converting String to Integer**
+```python
+num_str = "200"
+num_int = int(num_str)
+print(num_int, type(num_int))  # Output: 200 <class 'int'>
+```
+
+---
+
+## **8. Boolean Conversion**
+Booleans are converted using `bool()`. Any non-zero value is `True`, zero or empty structures are `False`.
+
+### **Example:**
+```python
+print(bool(0))  # Output: False
+print(bool(5))  # Output: True
+print(bool(""))  # Output: False
+print(bool("Hello"))  # Output: True
+```
+---
+
+## **9. Other Type Conversions**
+
+### **Bytes to String and Vice Versa**
+```python
+byte_data = b'Hello'
+str_data = byte_data.decode('utf-8')
+print(str_data)  # Output: Hello
+```
+
+```python
+str_data = "Hello"
+byte_data = str_data.encode('utf-8')
+print(byte_data)  # Output: b'Hello'
+```
+
+### **Dictionary to List of Tuples and Vice Versa**
+```python
+d = {'a': 1, 'b': 2}
+tuple_list = list(d.items())
+print(tuple_list)  # Output: [('a', 1), ('b', 2)]
+```
+
+```python
+tuple_list = [('a', 1), ('b', 2)]
+d = dict(tuple_list)
+print(d)  # Output: {'a': 1, 'b': 2}
+```
+---
+
+## **10. Summary**
+- Implicit conversion happens automatically when possible.
+- Explicit conversion uses built-in functions like `int()`, `float()`, `str()`, etc.
+- JSON conversion is done using `json.dumps()` and `json.loads()`.
+- `join()` merges a list into a string, `split()` breaks a string into a list.
+- Additional conversions include bytes-string, dictionary-tuple, and vice versa.
+- Python provides flexible ways to convert between different data types efficiently.
 
 
 
@@ -1905,7 +2071,307 @@ Invalid email format: invalid-email
 - Create custom exceptions when built-in exceptions are not enough.
 
 
-# **OOPS Concepts with Classes and Objects**
+# **Object-Oriented Programming (OOP) in Python**
+
+## **1. Introduction to OOP**
+Object-Oriented Programming (OOP) is a programming paradigm based on objects that contain both data (attributes) and behavior (methods). It helps in organizing code efficiently and makes it more reusable and scalable.
+
+## **2. Key OOP Concepts**
+### **1. Class and Object**
+- **Class**: A blueprint for creating objects.
+- **Object**: An instance of a class with unique values.
+
+#### **Example:**
+```python
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+my_car = Car("Toyota", "Corolla")  # Object creation
+print(my_car.brand, my_car.model)
+```
+**Output:**
+```
+Toyota Corolla
+```
+
+---
+### **2. Instance Variables and Methods**
+- **Instance Variable**: A variable that is associated with an instance of a class.
+- **Instance Method**: A method that operates on instance variables.
+
+#### **Example:**
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name  # Instance variable
+        self.age = age  # Instance variable
+    
+    def greet(self):
+        return f"Hello, my name is {self.name} and I am {self.age} years old."
+
+person1 = Person("Alice", 30)
+print(person1.greet())
+```
+**Output:**
+```
+Hello, my name is Alice and I am 30 years old.
+```
+
+---
+### **3. Encapsulation and Access Modifiers**
+Encapsulation is the practice of restricting direct access to some of an object's attributes and methods. It is achieved using access modifiers.
+
+#### **Access Modifiers:**
+- **Public (`var`)**: Accessible from anywhere.
+- **Protected (`_var`)**: Should not be accessed directly but still accessible within subclasses.
+- **Private (`__var`)**: Only accessible within the class.
+
+#### **Example:**
+```python
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name         # Public variable
+        self._department = "IT"  # Protected variable
+        self.__salary = salary   # Private variable
+    
+    def get_salary(self):
+        return self.__salary  # Accessing private variable via method
+    
+    def set_salary(self, amount):
+        if amount >= 0:
+            self.__salary = amount
+        else:
+            print("Salary cannot be negative")
+
+# Creating an instance
+emp = Employee("John", 50000)
+print(emp.name)         # Accessible (Public)
+print(emp._department)  # Accessible but discouraged (Protected)
+print(emp.get_salary()) # Accessing private variable via method
+emp.set_salary(60000)
+print(emp.get_salary())
+```
+**Output:**
+```
+John
+IT
+50000
+60000
+```
+
+---
+### **4. Inheritance**
+#### **Definition:**
+Inheritance is a mechanism where a child class acquires the properties and behaviors of a parent class.
+
+#### **Types of Inheritance & Visualization:**
+##### **Single Inheritance**
+```
+      Animal
+        |
+      Dog
+```
+```python
+class Animal:
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Bark"
+
+dog = Dog()
+print(dog.speak())
+```
+**Output:**
+```
+Bark
+```
+
+##### **Multiple Inheritance**
+```
+    Parent1      Parent2
+        \         /
+         \       /
+          \     /
+           Child
+```
+```python
+class Parent1:
+    def show(self):
+        print("This is Parent1")
+
+class Parent2:
+    def display(self):
+        print("This is Parent2")
+
+class Child(Parent1, Parent2):
+    pass
+
+obj = Child()
+obj.show()
+obj.display()
+```
+**Output:**
+```
+This is Parent1
+This is Parent2
+```
+
+##### **Multilevel Inheritance**
+```
+  Grandparent
+      |
+   Parent
+      |
+   Child
+```
+```python
+class Grandparent:
+    def greet(self):
+        return "Hello from Grandparent"
+
+class Parent(Grandparent):
+    pass
+
+class Child(Parent):
+    pass
+
+obj = Child()
+print(obj.greet())
+```
+**Output:**
+```
+Hello from Grandparent
+```
+
+##### **Hierarchical Inheritance**
+```
+      Parent
+      /    \
+  Child1  Child2
+```
+```python
+class Parent:
+    def show(self):
+        return "Hello from Parent"
+
+class Child1(Parent):
+    pass
+
+class Child2(Parent):
+    pass
+
+obj1 = Child1()
+obj2 = Child2()
+print(obj1.show())
+print(obj2.show())
+```
+**Output:**
+```
+Hello from Parent
+Hello from Parent
+```
+
+##### **Hybrid Inheritance**
+```
+      A
+     / \
+    B   C
+     \ /
+      D
+```
+```python
+class A:
+    def show(self):
+        return "Class A"
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+obj = D()
+print(obj.show())
+```
+**Output:**
+```
+Class A
+```
+
+---
+### **5. Polymorphism and Method Overriding**
+```python
+class Parent:
+    def show(self):
+        print("This is the Parent class")
+
+class Child(Parent):
+    def show(self):
+        print("This is the Child class")
+
+obj = Child()
+obj.show()
+```
+**Output:**
+```
+This is the Child class
+```
+
+---
+### **6. Abstraction & Abstract Classes**
+```python
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+
+class Car(Vehicle):
+    def start(self):
+        return "Car is starting"
+
+car = Car()
+print(car.start())
+```
+**Output:**
+```
+Car is starting
+```
+
+---
+### **7. Dunder Methods & Operator Overloading**
+```python
+class CustomList:
+    def __init__(self, items):
+        self.items = items
+
+    def __getitem__(self, index):
+        return self.items[index]
+    
+    def __repr__(self):
+        return f"CustomList({self.items})"
+    
+    def __add__(self, other):
+        return CustomList(self.items + other.items)
+
+cl1 = CustomList([1, 2])
+cl2 = CustomList([3, 4])
+cl3 = cl1 + cl2
+print(cl3)
+```
+**Output:**
+```
+CustomList([1, 2, 3, 4])
+```
+
 
 
 
