@@ -963,7 +963,7 @@ Python provides multiple ways to **merge dictionaries**, each with different beh
 
 ---
 
-5. # String Methods and Operations
+ # 5. String Methods and Operations
 
 ## 1. String Operations
 
