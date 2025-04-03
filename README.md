@@ -751,7 +751,7 @@ frozen_set.add(4)  # ❌ ERROR: Cannot modify a frozenset
 
 ---
 
-## **Dictionary in Python (unordered and mutable)**
+## 4. **Dictionary in Python (unordered and mutable)**
 
 A dictionary is a collection of key-value pairs where keys must be unique.
 
@@ -962,6 +962,63 @@ Python provides multiple ways to **merge dictionaries**, each with different beh
 ✅ **Creates a new dictionary**, similar to `|` but works in Python 3.5+.  
 
 ---
+
+5. # String Methods and Operations
+
+## 1. String Operations
+
+| Operation       | Description                               | Example         | Output         |
+|---------------|--------------------------------|----------------|----------------|
+| **Indexing** | Access characters using an index | `s[1]`       | `'e'`           |
+| **Slicing** | Extract a substring | `s[1:3]`      | `'el'`     |
+| **Concatenation** | Combine strings using `+` | `'Hello' + ' World'` | `'Hello World'`    |
+| **Repetition** | Repeat string using `*` | `'Hi' * 3` | `'HiHiHi'` |
+| **Membership** | Check if substring exists | `'H' in 'Hello'`     | `True`         |
+| **Length** | Get the string length | `len(s)`      | `5`            |
+
+---
+
+## 2. String Methods
+
+| Method       | Description                         | Example                | Output |
+|-------------|----------------------------------|-----------------------|--------|
+| `lower()`  | Converts string to lowercase | `'Hello'.lower()`  | `'hello'`    |
+| `upper()`  | Converts string to uppercase | `'Hello'.upper()` | `'HELLO'`    |
+| `title()`  | Converts first letter of each word to uppercase | `'hello world'.title()` | `'Hello World'` |
+| `capitalize()` | Capitalizes the first letter of the string | `'hello'.capitalize()` | `'Hello'` |
+| `strip()`  | Removes leading/trailing spaces | `'  hello  '.strip()` | `'hello'` |
+| `lstrip()`  | Removes leading spaces | `'  hello'.lstrip()` | `'hello'` |
+| `rstrip()`  | Removes trailing spaces | `'hello  '.rstrip()` | `'hello'` |
+| `replace(a, b)` | Replaces occurrences of `a` with `b` | `'hello'.replace('l', 'x')` | `'hexxo'` |
+| `split(x)`  | Splits string into a list by `x` | `'a,b,c'.split(',')` | `['a', 'b', 'c']` |
+| `join(iterable)` | Joins elements with a string | `'-'.join(['a', 'b', 'c'])` | `'a-b-c'` |
+| `find(x)`   | Returns index of first occurrence of `x` | `'hello'.find('l')` | `2` |
+| `rfind(x)`  | Returns index of last occurrence of `x` | `'hello'.rfind('l')` | `3` |
+| `count(x)`  | Counts occurrences of `x` | `'hello'.count('l')` | `2` |
+| `startswith(x)` | Checks if string starts with `x` | `'hello'.startswith('he')` | `True` |
+| `endswith(x)` | Checks if string ends with `x` | `'hello'.endswith('lo')` | `True` |
+| `isalpha()` | Returns `True` if all characters are letters | `'hello'.isalpha()` | `True` |
+| `isdigit()` | Returns `True` if all characters are digits | `'123'.isdigit()` | `True` |
+| `isalnum()` | Returns `True` if all characters are alphanumeric | `'hello123'.isalnum()` | `True` |
+| `isspace()` | Returns `True` if all characters are spaces | `'   '.isspace()` | `True` |
+| `swapcase()` | Swaps case of each letter | `'Hello'.swapcase()` | `'hELLO'` |
+| `zfill(n)` | Pads string with zeros to length `n` | `'42'.zfill(5)` | `'00042'` |
+| `format()` | Formats string with placeholders | `"Hello {}".format("World")` | `'Hello World'` |
+| `f-strings` | Formats strings using f-prefix | `f"Hello {name}"` | `'Hello Alice'` |
+
+---
+
+## 3. String Immutability
+
+Strings **cannot** be modified directly:
+```python
+s = "hello"
+s[0] = "H"  # ❌ TypeError: 'str' object does not support item assignment
+```
+Instead, create a new string:
+```python
+s = "H" + s[1:]  # ✅ 'Hello'
+```
 
 
 
