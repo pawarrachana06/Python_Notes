@@ -348,3 +348,109 @@ pipx install poetry
 - Use **`pipx`** to install Python CLI tools.
 - Use **`pip`** inside virtual environments for dependencies used in your codebase.
 
+
+
+
+
+## **22. functools: Higher-Order Function Utilities in Python**
+
+### 🧠 What Is `functools`?
+
+`functools` is a built-in Python module that provides higher-order functions — functions that act on or return other functions. It allows you to:
+
+- Reuse existing functions by partially applying arguments.
+- Wrap and enhance functions with decorators.
+- Improve code readability and modularity.
+
+---
+
+### ⚙️ Key Features and Functions in `functools`
+
+| Function           | Description |
+|--------------------|-------------|
+| `functools.partial` | Create a new version of a function with some arguments fixed. |
+| `functools.lru_cache` | Caches function results to speed up repeated calls (memoization). |
+| `functools.wraps`  | Helps preserve the metadata of decorated functions. |
+| `functools.reduce` | Applies a rolling computation to a sequence (e.g., sum, product). |
+| `functools.singledispatch` | Enables function overloading based on argument type. |
+| `functools.total_ordering` | Adds rich comparison methods automatically. |
+
+---
+
+### 🧪 Example: Using `partial` to Create Pre-Configured Functions
+
+
+1. @lru_cache — Remembers (caches) results of expensive function calls
+Real-life analogy:
+Imagine asking someone a math question like 20 x 30. If they already answered that before, they'll just say the answer quickly without redoing the math.
+
+✅ Use case: For slow functions like API calls, big calculations.
+
+```python
+from functools import lru_cache
+
+@lru_cache()
+def slow_function(x):
+    print("Calculating...")
+    return x * x
+```
+Now, repeated calls with the same x will be instant. No more “Calculating...”!
+
+2. partial() — Fix some arguments of a function
+Real-life analogy:
+You call your favorite pizza place and say “Always add cheese, I’ll just tell you the toppings.”
+You’re fixing one part of your order.
+
+✅ Use case: Reuse functions with preset values.
+
+```python
+from functools import partial
+
+def power(base, exponent):
+    return base ** exponent
+
+square = partial(power, exponent=2)
+print(square(4))  # 16
+```
+You’ve made a new function that always squares a number!
+
+3. reduce() — Repeatedly apply a function to items in a list
+Real-life analogy:
+You want to fold a list into a single result. Like adding all numbers in a list.
+
+✅ Use case: Reduce a list to one value.
+
+```python
+from functools import reduce
+
+nums = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, nums)
+print(result)  # 10
+```
+This keeps doing: (((1+2)+3)+4)
+
+
+
+```python
+from functools import partial
+
+def power(base, exponent):
+    return base ** exponent
+
+# Create a square function
+square = partial(power, exponent=2)
+
+print(square(5))  # Output: 25
+```
+
+---
+
+### ✅ Why Use `functools`?
+
+- Encourages DRY (Don't Repeat Yourself) principles.
+- Makes code cleaner and more expressive.
+- Helpful in decorators, performance optimization, and functional programming.
+
+> `functools` is a powerful tool in any Python developer's toolkit for building reusable and performant code, especially when dealing with decorators and functional-style programming.
+ 
+
